@@ -1,12 +1,20 @@
-import { useRef } from 'react';
+import { useState, useRef } from 'react';
 import { RiWallet3Line, RiCapsuleFill } from 'react-icons/ri';
 import { BiUserCircle } from 'react-icons/bi';
 import { HiOutlineSearch } from 'react-icons/hi';
 
+import Dropdown from '../ui/Dropdown';
 import classes from './Header.module.css';
 
 function Header() {
+  const [xPosition, setXPosition] = useState(0);
+  const [yPosition, setYPosition] = useState(0);
+  const [statsIsOver, setStatsIsOver] = useState(false);
+  const [accountIsOver, setAccountIsOver] = useState(false);
+
   const serchInputRef = useRef(null);
+  const statsRef = useRef(null);
+  const accountRef = useRef(null);
 
   const focusInput = () => {
     serchInputRef.current.classList.add(classes.focus);
@@ -15,6 +23,28 @@ function Header() {
   const blurInput = () => {
     serchInputRef.current.classList.remove(classes.focus);
   };
+
+  const mouseOverStats = () => {
+    const position = statsRef.current.getBoundingClientRect();
+    setXPosition(position.x + position.width - 220);
+    setYPosition(position.y + position.height);
+    setStatsIsOver(true);
+  }
+
+  const mouseLeaveStats = () => {
+    setStatsIsOver(false);
+  }
+
+  const mouseOverAccount = () => {
+    const position = accountRef.current.getBoundingClientRect();
+    setXPosition(position.x + position.width - 220);
+    setYPosition(position.y + position.height);
+    setAccountIsOver(true);
+  }
+
+  const mouseLeaveAccount = () => {
+    setAccountIsOver(false);
+  }
 
   return (
     <div className={classes.header}>
@@ -32,9 +62,13 @@ function Header() {
         />
       </div>
       <div className={classes.items}>
-        <div className={classes.item}>Stats</div>
-        <div className={classes.item}>
-          <BiUserCircle className={classes.img} />
+        <div className={classes.item} ref={statsRef} onMouseOver={mouseOverStats} onMouseLeave={mouseLeaveStats}>
+          <div>Stats</div>
+          {statsIsOver && <Dropdown type='stats' x={xPosition} y={yPosition}/>}
+        </div>
+        <div className={classes.item} ref={accountRef} onMouseOver={mouseOverAccount} onMouseLeave={mouseLeaveAccount}>
+          <BiUserCircle className={classes.img} />          
+          {accountIsOver && <Dropdown type='accout' x={xPosition} y={yPosition}/>}
         </div>
         <div className={classes.item}>
           <RiWallet3Line className={classes.img} />
