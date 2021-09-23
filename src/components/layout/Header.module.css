@@ -5,6 +5,8 @@
   align-items: center;
   padding: 0 20px;
   box-shadow: 0 3px 5px rgba(57, 63, 72, 0.3);
+  background-color: white;
+  z-index: 100;
 }
 
 .logo {
@@ -87,4 +89,10 @@
 
 .focus {
   border: 1px solid #1E90FF;
+}
+
+.clicked {
+  height: 70px;
+  color: #04111D;
+  border-bottom: 2px solid #2081E2;
 }
