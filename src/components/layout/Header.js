@@ -21,7 +21,7 @@ function Header() {
   const walletRef = useRef(null);
 
   const clickHeader = () => {
-    walletIsOpen && closeWallet();
+    // walletIsOpen && closeWallet();
   };
 
   const focusInput = () => {
