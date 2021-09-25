@@ -1,5 +1,7 @@
 .header {
   height: 72px;
+  /* width: 100%; */
+  /* position: fixed; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -78,6 +80,12 @@
 .img {
   width: 32px;
   height: 32px;
+}
+
+.walletImg {
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
 }
 
 .item:hover {

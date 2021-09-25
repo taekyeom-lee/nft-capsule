@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { RiWallet3Line, RiCapsuleFill } from 'react-icons/ri';
 import { BiUserCircle } from 'react-icons/bi';
 import { HiOutlineSearch } from 'react-icons/hi';
@@ -7,6 +8,8 @@ import Dropdown from '../ui/Dropdown';
 import SideModal from '../ui/SideModal';
 import Backdrop from '../ui/Backdrop';
 import classes from './Header.module.css';
+
+import girl from '../../resources/img/girl.jpg';
 
 function Header() {
   const [xPosition, setXPosition] = useState(0);
@@ -19,6 +22,8 @@ function Header() {
   const statsRef = useRef(null);
   const accountRef = useRef(null);
   const walletRef = useRef(null);
+
+  const selected = useSelector((state) => state.account);
 
   const clickHeader = () => {
     // walletIsOpen && closeWallet();
@@ -101,7 +106,11 @@ function Header() {
           onMouseOver={mouseOverAccount}
           onMouseLeave={mouseLeaveAccount}
         >
-          <BiUserCircle className={classes.img} />
+          {selected.address ? (
+            <img className={classes.walletImg} alt={girl} src={girl} />
+          ) : (
+            <BiUserCircle className={classes.img} />
+          )}
           {accountIsOver && (
             <Dropdown type="accout" x={xPosition} y={yPosition} />
           )}

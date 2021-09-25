@@ -17,18 +17,58 @@
   border-bottom: 1px solid rgb(229, 232, 235);
 }
 
+.titleFront {
+  display: flex;
+}
+
 .titleImg {
   width: 30px;
   height: 30px;
   margin-right: 10px;
 }
 
+.walletImg {
+  width: 28px;
+  height: 28px;
+  border-radius: 14px;
+  margin-right: 10px;
+}
+
 .titleText {
   font-size: 1rem;
+  color: black;
+}
+
+.titleIcon {
+  width: 24px;
+  height: 24px;
+}
+
+.titleAddress {
+  margin-left: auto;
+  font-size: 0.9rem;
 }
 
 .divContainer {
   padding: 20px;
+}
+
+.walletBalance {
+  border: 1px solid rgb(229, 232, 235);
+  border-radius: 4px;
+}
+
+.walletText {
+  font-size: 0.8rem;
+  font-weight: bold;
+  margin: 14px 0 6px 0;
+  text-align: center;
+}
+
+.walletNumber {
+  text-align: center;
+  margin-bottom: 14px;
+  color: black;
 }
 
 .text {
